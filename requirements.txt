@@ -1,6 +1,6 @@
 altair==5.5.0
 # anaconda-anon-usage @ file:///C:/b/abs_e8r_zga7xy/croot/anaconda-anon-usage_1732732454901/work
-archspec @ file:///croot/archspec_1709217642129/work
+# archspec @ file:///croot/archspec_1709217642129/work
 asttokens==3.0.0
 attrs==25.1.0
 babel==2.16.0
