@@ -75,7 +75,7 @@ protobuf==5.29.3
 pure_eval==0.2.3
 pyarrow==19.0.0
 # pycosat @ file:///C:/b/abs_5csdern___/croot/pycosat_1714513102923/work
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+# pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
 pydeck==0.9.1
 Pygments==2.19.1
 pyparsing==3.2.1
