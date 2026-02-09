@@ -1,62 +1,45 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import pickle
+import pandas as pd
 
-# -----------------------------------------------
-# Fungsi untuk load model
-# -----------------------------------------------
+st.set_page_config(
+    page_title="Attrition Rate Prediction",
+    layout="centered"
+)
+
 @st.cache_resource
 def load_model():
     with open("attrition_model.pkl", "rb") as f:
-        model = pickle.load(f)
-    return model
+        return pickle.load(f)
 
-model = load_model()
+try:
+    model = load_model()
+except Exception as e:
+    st.error("Model gagal dimuat")
+    st.exception(e)
+    st.stop()
 
-# -----------------------------------------------
-# Halaman Aplikasi
-# -----------------------------------------------
-st.title("Employee Attrition Prediction")
-st.write("""
-Aplikasi ini memprediksi kemungkinan seorang karyawan keluar (attrition) berdasarkan fitur input.
-""")
+st.title("🎓 Student Attrition Prediction")
 
-# -----------------------------------------------
-# Input User (Sesuaikan dengan fitur dataset)
-# -----------------------------------------------
-st.header("Masukkan Data Employee")
+st.subheader("Input Data")
 
-age = st.number_input("Age", min_value=18, max_value=70, value=30)
-monthly_income = st.number_input("Monthly Income", min_value=1000, value=5000)
-years_at_company = st.number_input("Years at Company", min_value=0, value=3)
-job_satisfaction = st.slider("Job Satisfaction (1-4)", 1, 4, 2)
-over_time = st.selectbox("OverTime", ["Yes", "No"])
+age = st.number_input("Age", 15, 60, 20)
+attendance = st.slider("Attendance (%)", 0, 100, 80)
+gpa = st.slider("GPA", 0.0, 4.0, 3.0)
+financial_aid = st.selectbox("Financial Aid", ["Yes", "No"])
+financial_aid = 1 if financial_aid == "Yes" else 0
 
-# Encoding sederhana (ubah sesuai model)
-overtime_encoded = 1 if over_time == "Yes" else 0
+if st.button("Predict"):
+    X = pd.DataFrame([{
+        "age": age,
+        "attendance": attendance,
+        "gpa": gpa,
+        "financial_aid": financial_aid
+    }])
 
-# -----------------------------------------------
-# Trigger Prediksi
-# -----------------------------------------------
-if st.button("Predict Attrition"):
-    X = np.array([[age, monthly_income, years_at_company, job_satisfaction, overtime_encoded]])
-    
-    # Prediksi
-    pred = model.predict(X)[0]
-    proba = model.predict_proba(X)[0][1] if hasattr(model, "predict_proba") else None
-    
-    st.write("### Hasil Prediksi:")
-    st.write("➡️ **Attrition = Yes**" if pred == 1 else "➡️ **Attrition = No**")
-    
-    if proba is not None:
-        st.write(f"💡 Probability Attrition: {proba*100:.2f}%")
+    prediction = model.predict(X)[0]
 
-# -----------------------------------------------
-# Visualisasi (opsional)
-# -----------------------------------------------
-st.header("Tentang Model")
-st.markdown("""
-Model prediksi dibangun menggunakan Python dan scikit-learn.
-Model dilatih untuk mengestimasi risiko attrition berdasarkan fitur employee.
-""")
+    if prediction == 1:
+        st.error("⚠️ Berpotensi Dropout")
+    else:
+        st.success("✅ Tidak Berpotensi Dropout")
