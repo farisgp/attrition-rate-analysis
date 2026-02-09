@@ -1,5 +1,5 @@
 altair==5.5.0
-anaconda-anon-usage @ file:///C:/b/abs_e8r_zga7xy/croot/anaconda-anon-usage_1732732454901/work
+# anaconda-anon-usage @ file:///C:/b/abs_e8r_zga7xy/croot/anaconda-anon-usage_1732732454901/work
 archspec @ file:///croot/archspec_1709217642129/work
 asttokens==3.0.0
 attrs==25.1.0
@@ -17,7 +17,7 @@ charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
 click==8.1.8
 colorama @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/colorama_1699472650914/work
 conda @ file:///C:/b/abs_3bs4tei4e9/croot/conda_1733841834375/work
-conda-anaconda-telemetry @ file:///C:/b/abs_b5wbfhyt0i/croot/conda-anaconda-telemetry_1733260551861/work
+# conda-anaconda-telemetry @ file:///C:/b/abs_b5wbfhyt0i/croot/conda-anaconda-telemetry_1733260551861/work
 conda-content-trust @ file:///C:/b/abs_bdfatn_wzf/croot/conda-content-trust_1714483201909/work
 conda-libmamba-solver @ file:///croot/conda-libmamba-solver_1727775630457/work/src
 conda-package-handling @ file:///C:/b/abs_7fz3aferfv/croot/conda-package-handling_1731369038903/work
